@@ -80,3 +80,8 @@ Install IntelliJ IDEA
    	For Windows
    	Download geckodriver (https://www.seleniumhq.org/download/) & chromedriver (http://chromedriver.chromium.org/downloads)
    	Put .exe files in System32 package
+
+
+   	This tests check search page of Google.
+   	To initialize tests run command from terminal: mvn test -DSearchTestSuite=search-test.xml
+

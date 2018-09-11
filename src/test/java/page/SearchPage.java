@@ -1,5 +1,6 @@
 package page;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,10 @@ public class SearchPage extends BasePage {
 
     @FindBy(xpath = "//a[@aria-label='Page 2']")
     private WebElement secondPageLink;
+
+    private String pageLinkXPath(int pagenumber){
+        return "//a[@aria-label='Page "+ pagenumber + "']";
+    }
 
     public SearchPage(WebDriver browser) {
         this.browser = browser;
@@ -59,8 +64,8 @@ public class SearchPage extends BasePage {
         return searchResultsTotal.getText();
     }
 
-    public SearchPage goToSecondPage(){
-        secondPageLink.click();
+    public SearchPage goToNextPage(int pageNumber){
+        browser.findElement(By.xpath(pageLinkXPath(pageNumber))).click();
         return new SearchPage(browser);
     }
 }

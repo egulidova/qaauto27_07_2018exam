@@ -29,17 +29,20 @@ public class SearchTest extends BaseTest {
         Assert.assertTrue(searchPage.getSearchResultsCount() >= 9, "Not enough search results on search page");
         List<String> searchResults = searchPage.getSearchResultsList();
         for (String searchResult: searchResults){
-            Assert.assertTrue(searchResult.toLowerCase().contains(searchTerm.toLowerCase()), "search term: "+searchTerm+" not found in: \n"+searchResult);
+            Assert.assertTrue(searchResult.toLowerCase().contains(searchTerm.toLowerCase()),
+                    "search term: "+searchTerm+" not found in: \n"+searchResult);
         }
 
-        searchPage = searchPage.goToSecondPage();
+        searchPage = searchPage.goToNextPage(2);
         Assert.assertTrue(searchPage.isLoaded("Сторінка 2"));
 
-        Assert.assertTrue(searchPage.getSearchResultsCount() >= 9, "Not enough search results on second search page");
+        Assert.assertTrue(searchPage.getSearchResultsCount() >= 9,
+                "Not enough search results on second search page");
 
         List<String> searchResultsSecondPage = searchPage.getSearchResultsList();
         for (String searchResult: searchResultsSecondPage){
-            Assert.assertTrue(searchResult.toLowerCase().contains(searchTerm.toLowerCase()), "For second page search term: "+searchTerm+" not found in: \n"+searchResult);
+            Assert.assertTrue(searchResult.toLowerCase().contains(searchTerm.toLowerCase()),
+                    "For second page search term: "+searchTerm+" not found in: \n"+searchResult);
         }
     }
 }
