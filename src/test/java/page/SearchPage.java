@@ -17,9 +17,6 @@ public class SearchPage extends BasePage {
     @FindBy(xpath = "//div[@id='resultStats']")
     private WebElement searchResultsTotal;
 
-    @FindBy(xpath = "//a[@aria-label='Page 2']")
-    private WebElement secondPageLink;
-
     private String pageLinkXPath(int pagenumber){
         return "//a[@aria-label='Page "+ pagenumber + "']";
     }
@@ -64,8 +61,8 @@ public class SearchPage extends BasePage {
         return searchResultsTotal.getText();
     }
 
-    public SearchPage goToNextPage(int pageNumber){
-        browser.findElement(By.xpath(pageLinkXPath(pageNumber))).click();
+    public SearchPage goToNextPage(int pagenumber){
+        browser.findElement(By.xpath(pageLinkXPath(pagenumber))).click();
         return new SearchPage(browser);
     }
 }
